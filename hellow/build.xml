@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Ant Example" default="execute">
+
+	<target name="init" depends="clean">
+		<mkdir dir="build/classes" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="build/classes" />
+	</target>
+	
+	<target name="execute" depends="compile">
+		<java classname="hellow.hellow1" classpath="build/classes" />
+	</target>
+	
+	<target name="execute1" depends="compile">
+		<java classname="hellow.hellow2" classpath="build/classes" />
+	</target>
+		
+		<target name="executecommon" depends="execute, execute1">
+		<java classname="hellow.common" classpath="build/classes" />
+		<echo>Target execute, execute1</echo>
+	</target>
+
+	<target name="clean">
+		<delete dir="build" />
+	</target>
+	
+</project>
